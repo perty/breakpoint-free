@@ -1,0 +1,120 @@
+/* @link https://utopia.fyi/space/calculator?c=320,16,1.2,1140,24,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+
+:root {
+    --fluid-min-width: 320;
+    --fluid-max-width: 1140;
+
+    --fluid-screen: 100vw;
+    --fluid-bp: calc((var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)));
+}
+
+@media screen and (min-width: 1140px) {
+    :root {
+        --fluid-screen: calc(var(--fluid-max-width) * 1px);
+    }
+}
+
+:root {
+    --fc-3xs-min: calc(var(--fc-s-min) * 0.25);
+    --fc-3xs-max: calc(var(--fc-s-max) * 0.25);
+
+    --fc-2xs-min: calc(var(--fc-s-min) * 0.5);
+    --fc-2xs-max: calc(var(--fc-s-max) * 0.5);
+
+    --fc-xs-min: calc(var(--fc-s-min) * 0.75);
+    --fc-xs-max: calc(var(--fc-s-max) * 0.75);
+
+    --fc-s-min: var(--f-0-min, 16);
+    --fc-s-max: var(--f-0-max, 24);
+
+    --fc-m-min: calc(var(--fc-s-min) * 1.5);
+    --fc-m-max: calc(var(--fc-s-max) * 1.5);
+
+    --fc-l-min: calc(var(--fc-s-min) * 2);
+    --fc-l-max: calc(var(--fc-s-max) * 2);
+
+    --fc-xl-min: calc(var(--fc-s-min) * 3);
+    --fc-xl-max: calc(var(--fc-s-max) * 3);
+
+    --fc-2xl-min: calc(var(--fc-s-min) * 4);
+    --fc-2xl-max: calc(var(--fc-s-max) * 4);
+
+    --fc-3xl-min: calc(var(--fc-s-min) * 6);
+    --fc-3xl-max: calc(var(--fc-s-max) * 6);
+
+    /* T-shirt sizes */
+    --space-3xs: calc(((var(--fc-3xs-min) / 16) * 1rem) + (var(--fc-3xs-max) - var(--fc-3xs-min)) * var(--fluid-bp));
+    --space-2xs: calc(((var(--fc-2xs-min) / 16) * 1rem) + (var(--fc-2xs-max) - var(--fc-2xs-min)) * var(--fluid-bp));
+    --space-xs: calc(((var(--fc-xs-min) / 16) * 1rem) + (var(--fc-xs-max) - var(--fc-xs-min)) * var(--fluid-bp));
+    --space-s: calc(((var(--fc-s-min) / 16) * 1rem) + (var(--fc-s-max) - var(--fc-s-min)) * var(--fluid-bp));
+    --space-m: calc(((var(--fc-m-min) / 16) * 1rem) + (var(--fc-m-max) - var(--fc-m-min)) * var(--fluid-bp));
+    --space-l: calc(((var(--fc-l-min) / 16) * 1rem) + (var(--fc-l-max) - var(--fc-l-min)) * var(--fluid-bp));
+    --space-xl: calc(((var(--fc-xl-min) / 16) * 1rem) + (var(--fc-xl-max) - var(--fc-xl-min)) * var(--fluid-bp));
+    --space-2xl: calc(((var(--fc-2xl-min) / 16) * 1rem) + (var(--fc-2xl-max) - var(--fc-2xl-min)) * var(--fluid-bp));
+    --space-3xl: calc(((var(--fc-3xl-min) / 16) * 1rem) + (var(--fc-3xl-max) - var(--fc-3xl-min)) * var(--fluid-bp));
+
+    /* One-up pairs */
+    --space-3xs-2xs: calc(((var(--fc-3xs-min) / 16) * 1rem) + (var(--fc-2xs-max) - var(--fc-3xs-min)) * var(--fluid-bp));
+    --space-2xs-xs: calc(((var(--fc-2xs-min) / 16) * 1rem) + (var(--fc-xs-max) - var(--fc-2xs-min)) * var(--fluid-bp));
+    --space-xs-s: calc(((var(--fc-xs-min) / 16) * 1rem) + (var(--fc-s-max) - var(--fc-xs-min)) * var(--fluid-bp));
+    --space-s-m: calc(((var(--fc-s-min) / 16) * 1rem) + (var(--fc-m-max) - var(--fc-s-min)) * var(--fluid-bp));
+    --space-m-l: calc(((var(--fc-m-min) / 16) * 1rem) + (var(--fc-l-max) - var(--fc-m-min)) * var(--fluid-bp));
+    --space-l-xl: calc(((var(--fc-l-min) / 16) * 1rem) + (var(--fc-xl-max) - var(--fc-l-min)) * var(--fluid-bp));
+    --space-xl-2xl: calc(((var(--fc-xl-min) / 16) * 1rem) + (var(--fc-2xl-max) - var(--fc-xl-min)) * var(--fluid-bp));
+    --space-2xl-3xl: calc(((var(--fc-2xl-min) / 16) * 1rem) + (var(--fc-3xl-max) - var(--fc-2xl-min)) * var(--fluid-bp));
+
+    /* Custom pairs */
+    --space-s-l: calc(((var(--fc-s-min) / 16) * 1rem) + (var(--fc-l-max) - var(--fc-s-min)) * var(--fluid-bp));
+}
+
+.smallBox {
+    padding: var(--space-s);
+    display: inline-block;
+}
+
+.mediumBox {
+    width: var(--space-m);
+    height: var(--space-m);
+}
+
+.largeBox {
+    width: var(--space-l);
+    height: var(--space-l);
+}
+
+.xlargeBox {
+    width: var(--space-xl);
+    height: var(--space-xl);
+}
+
+.wrapped-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, calc(var(--space-s-m) * 8));
+    grid-gap: var(--space-xs-s);
+}
+
+.c-card {
+    padding: var(--space-s-m);
+    border: solid red;
+    border-radius: var(--space-s);
+}
+
+.c-card p {
+    font-size: var(--step-2);
+}
+
+.c-card h2 {
+    font-size: var(--step-3);
+}
+
+.u-flow > * + * {
+    margin-top: var(--space-s);
+}
+
+.u-flow--l > * + * {
+    margin-top: var(--space-l);
+}
+
+.u-flow--s-m > * + * {
+    margin-top: var(--space-s-m);
+}
